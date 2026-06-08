@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Adota Pet — Plataforma de adoção responsável de animais">
+  <title>Adota Pet 🐾</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="/" class="logo">🐾 Adota Pet</a>
+      <ul class="nav-links">
+        <li><a href="/">Início</a></li>
+        <li id="nav-painel"   style="display:none"><a href="/pages/painel.html">Meu Painel</a></li>
+        <li id="nav-nome"     style="display:none"></li>
+        <li id="nav-logout"   style="display:none"><button onclick="logout()">Sair</button></li>
+        <li id="nav-login"    style="display:none"><a href="/pages/login.html"  class="btn btn-secundario">Entrar</a></li>
+        <li id="nav-cadastro" style="display:none"><a href="/pages/cadastro.html" class="btn btn-primario">Cadastrar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-emoji">🐶🐱🐾</div>
+      <h1>Adote com <span>responsabilidade</span>,<br>transforme uma vida.</h1>
+      <p>Encontre seu novo melhor amigo e dê a ele um lar cheio de amor.</p>
+      <div class="hero-btns">
+        <a href="#animais" class="btn btn-primario">Ver animais disponíveis</a>
+        <a href="/pages/cadastro.html" class="btn btn-secundario">Quero cadastrar um animal</a>
+      </div>
+    </section>
+
+    <!-- FILTROS -->
+    <div class="filtros container" role="search" aria-label="Filtrar animais">
+      <select id="filtro-especie" aria-label="Espécie">
+        <option value="">Todas as espécies</option>
+        <option value="cachorro">🐶 Cachorro</option>
+        <option value="gato">🐱 Gato</option>
+        <option value="outro">🐾 Outro</option>
+      </select>
+      <select id="filtro-porte" aria-label="Porte">
+        <option value="">Qualquer porte</option>
+        <option value="pequeno">Pequeno</option>
+        <option value="medio">Médio</option>
+        <option value="grande">Grande</option>
+      </select>
+      <select id="filtro-sexo" aria-label="Sexo">
+        <option value="">Qualquer sexo</option>
+        <option value="macho">♂ Macho</option>
+        <option value="femea">♀ Fêmea</option>
+      </select>
+      <input type="text" id="filtro-cidade" placeholder="Cidade..." aria-label="Cidade">
+      <button class="btn btn-primario" id="btn-filtrar">Filtrar</button>
+      <button class="btn btn-secundario" id="btn-limpar">Limpar</button>
+    </div>
+
+    <!-- LISTAGEM -->
+    <section class="secao-animais" id="animais">
+      <h2 class="secao-titulo">Animais disponíveis para adoção</h2>
+      <div id="grid-animais" role="list" aria-label="Lista de animais">
+        <div id="loading">
+          <div class="spinner"></div>
+          <span>Buscando animais...</span>
+        </div>
+        <div id="vazio" style="display:none">
+          <span class="vazio-emoji">🔍</span>
+          <p>Nenhum animal encontrado com esses filtros.</p>
+          <button class="btn btn-secundario" id="btn-limpar-vazio">Limpar filtros</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>🐾 Adota Pet &mdash; Projeto acadêmico de Desenvolvimento Web 2026 &bull; <a href="https://github.com" target="_blank">GitHub</a></p>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/animais.js"></script>
+  <script>
+    // botão limpar dentro do bloco vazio
+    document.getElementById('btn-limpar-vazio')?.addEventListener('click', () => {
+      document.getElementById('btn-limpar').click();
+    });
+  </script>
+</body>
+</html>

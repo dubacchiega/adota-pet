@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Painel — Adota Pet</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="/" class="logo">🐾 Adota Pet</a>
+      <ul class="nav-links">
+        <li><a href="/">Início</a></li>
+        <li id="nav-painel"   style="display:none"><a href="/pages/painel.html">Meu Painel</a></li>
+        <li id="nav-nome"     style="display:none"></li>
+        <li id="nav-logout"   style="display:none"><button onclick="logout()">Sair</button></li>
+        <li id="nav-login"    style="display:none"><a href="/pages/login.html"  class="btn btn-secundario">Entrar</a></li>
+        <li id="nav-cadastro" style="display:none"><a href="/pages/cadastro.html" class="btn btn-primario">Cadastrar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagina-painel">
+    <div class="painel-header">
+      <h1>Olá, <span id="painel-nome">...</span>! 👋</h1>
+      <p>
+        <span id="badge-tipo" class="status-badge status-disponivel"></span>
+        Gerencie seus animais e solicitações aqui.
+      </p>
+    </div>
+
+    <div class="abas" role="tablist">
+      <button class="aba ativa" data-aba="cadastrar" role="tab">➕ Cadastrar animal</button>
+      <button class="aba" data-aba="meus-animais" role="tab">🐾 Meus animais</button>
+      <button class="aba" data-aba="recebidas" role="tab">📬 Solicitações recebidas</button>
+      <button class="aba" data-aba="minhas-solic" role="tab">📤 Minhas solicitações</button>
+    </div>
+
+    <div id="painel-cadastrar" class="painel-aba ativo" role="tabpanel">
+      <div class="card-painel">
+        <h2>Cadastrar novo animal</h2>
+        <form id="form-animal" class="form-painel" novalidate>
+          <div class="form-linha">
+            <div class="campo">
+              <label for="a-nome">Nome <span class="req">*</span></label>
+              <input type="text" id="a-nome" placeholder="Rex, Mimi..." required>
+            </div>
+            <div class="campo">
+              <label for="a-especie">Espécie <span class="req">*</span></label>
+              <select id="a-especie" required>
+                <option value="">Selecione</option>
+                <option value="cachorro">🐶 Cachorro</option>
+                <option value="gato">🐱 Gato</option>
+                <option value="outro">🐾 Outro</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-linha">
+            <div class="campo">
+              <label for="a-sexo">Sexo <span class="req">*</span></label>
+              <select id="a-sexo" required>
+                <option value="">Selecione</option>
+                <option value="macho">♂ Macho</option>
+                <option value="femea">♀ Fêmea</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="a-porte">Porte</label>
+              <select id="a-porte">
+                <option value="">Selecione</option>
+                <option value="pequeno">Pequeno</option>
+                <option value="medio">Médio</option>
+                <option value="grande">Grande</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-linha">
+            <div class="campo">
+              <label for="a-raca">Raça</label>
+              <input type="text" id="a-raca" placeholder="SRD, Labrador...">
+            </div>
+            <div class="campo">
+              <label for="a-idade">Idade (anos)</label>
+              <input type="number" id="a-idade" min="0" max="30" placeholder="2">
+            </div>
+          </div>
+          <div class="campo">
+            <label for="a-foto">URL da foto (opcional)</label>
+            <input type="url" id="a-foto" placeholder="https://...">
+          </div>
+          <div class="campo">
+            <label for="a-descricao">Descrição</label>
+            <textarea id="a-descricao" placeholder="Conte sobre o temperamento, história e necessidades do animal..."></textarea>
+          </div>
+          <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+            <label class="campo-check"><input type="checkbox" id="a-vacinado"> Vacinado</label>
+            <label class="campo-check"><input type="checkbox" id="a-castrado"> Castrado</label>
+          </div>
+          <div id="alerta-animal" class="alerta" role="alert"></div>
+          <button type="submit" class="btn btn-primario">Cadastrar animal</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="painel-meus-animais" class="painel-aba" role="tabpanel">
+      <div class="card-painel">
+        <h2>Meus animais cadastrados</h2>
+        <div id="lista-meus-animais"><p class="carregando">Carregando...</p></div>
+      </div>
+    </div>
+
+    <div id="painel-recebidas" class="painel-aba" role="tabpanel">
+      <div class="card-painel">
+        <h2>Solicitações de adoção recebidas</h2>
+        <div id="lista-recebidas"><p class="carregando">Carregando...</p></div>
+      </div>
+    </div>
+
+    <div id="painel-minhas-solic" class="painel-aba" role="tabpanel">
+      <div class="card-painel">
+        <h2>Minhas solicitações de adoção</h2>
+        <div id="lista-minhas-solic"><p class="carregando">Carregando...</p></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>🐾 Adota Pet &mdash; Projeto acadêmico 2026</p>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/painel.js"></script>
+</body>
+</html>

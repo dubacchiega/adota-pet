@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar conta — Adota Pet</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="/" class="logo">🐾 Adota Pet</a>
+      <ul class="nav-links">
+        <li><a href="/">← Início</a></li>
+        <li id="nav-painel"   style="display:none"><a href="/pages/painel.html">Meu Painel</a></li>
+        <li id="nav-nome"     style="display:none"></li>
+        <li id="nav-logout"   style="display:none"><button onclick="logout()">Sair</button></li>
+        <li id="nav-login"    style="display:none"><a href="/pages/login.html"  class="btn btn-secundario">Entrar</a></li>
+        <li id="nav-cadastro" style="display:none"><a href="/pages/cadastro.html" class="btn btn-primario">Cadastrar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagina-auth">
+    <div class="card-auth">
+      <div class="card-auth-emoji">🐶🐱</div>
+      <h1>Criar conta</h1>
+      <p class="subtitulo">Junte-se a quem salva vidas</p>
+
+      <form id="form-cadastro" novalidate>
+        <div class="form-grupo">
+          <div class="campo">
+            <label for="nome">Nome completo <span class="req">*</span></label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required autocomplete="name">
+          </div>
+
+          <div class="campo">
+            <label for="email">E-mail <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="email">
+          </div>
+
+          <div class="form-linha">
+            <div class="campo">
+              <label for="senha">Senha <span class="req">*</span></label>
+              <input type="password" id="senha" name="senha" placeholder="Mín. 6 caracteres" required autocomplete="new-password">
+            </div>
+            <div class="campo">
+              <label for="senha2">Confirmar senha <span class="req">*</span></label>
+              <input type="password" id="senha2" name="senha2" placeholder="Repita a senha" required autocomplete="new-password">
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="tipo">Tipo de conta <span class="req">*</span></label>
+            <select id="tipo" name="tipo" required>
+              <option value="">Selecione...</option>
+              <option value="adotante">🐾 Adotante — quero adotar um animal</option>
+              <option value="doador">🏠 Doador — quero colocar animais para adoção</option>
+            </select>
+          </div>
+
+          <div class="form-linha">
+            <div class="campo">
+              <label for="telefone">Telefone / WhatsApp</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" autocomplete="tel">
+            </div>
+            <div class="campo">
+              <label for="cidade">Cidade</label>
+              <input type="text" id="cidade" name="cidade" placeholder="São Paulo" autocomplete="address-level2">
+            </div>
+          </div>
+
+          <div id="alerta-cadastro" class="alerta" role="alert"></div>
+
+          <button type="submit" class="btn btn-primario" style="width:100%;justify-content:center;">
+            Criar conta
+          </button>
+        </div>
+      </form>
+
+      <p class="link-alterno">
+        Já tem conta? <a href="/pages/login.html">Entrar</a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <p>🐾 Adota Pet &mdash; Projeto acadêmico 2026</p>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

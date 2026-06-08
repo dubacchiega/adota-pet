@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal — Adota Pet</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="/" class="logo">🐾 Adota Pet</a>
+      <ul class="nav-links">
+        <li><a href="/">← Voltar</a></li>
+        <li id="nav-painel"   style="display:none"><a href="/pages/painel.html">Meu Painel</a></li>
+        <li id="nav-nome"     style="display:none"></li>
+        <li id="nav-logout"   style="display:none"><button onclick="logout()">Sair</button></li>
+        <li id="nav-login"    style="display:none"><a href="/pages/login.html"  class="btn btn-secundario">Entrar</a></li>
+        <li id="nav-cadastro" style="display:none"><a href="/pages/cadastro.html" class="btn btn-primario">Cadastrar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pagina-detalhe" id="conteudo-animal">
+    <div class="detalhe-grid">
+
+      <!-- Coluna esquerda: foto -->
+      <div>
+        <div class="detalhe-foto" id="animal-foto">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+      <!-- Coluna direita: informações -->
+      <div class="detalhe-info">
+        <h1 id="animal-nome">Carregando...</h1>
+        <div style="margin-bottom:.75rem">
+          <span class="tag" id="animal-especie"></span>
+        </div>
+
+        <table class="detalhe-tabela" aria-label="Informações do animal">
+          <tbody>
+            <tr><td>Sexo</td>      <td id="animal-sexo"></td></tr>
+            <tr><td>Raça</td>      <td id="animal-raca"></td></tr>
+            <tr><td>Idade</td>     <td id="animal-idade"></td></tr>
+            <tr><td>Porte</td>     <td id="animal-porte"></td></tr>
+            <tr><td>Vacinado</td>  <td id="animal-vacinado"></td></tr>
+            <tr><td>Castrado</td>  <td id="animal-castrado"></td></tr>
+          </tbody>
+        </table>
+
+        <p class="detalhe-descricao" id="animal-descricao"></p>
+
+        <div class="card-doador">
+          <strong>🏠 Responsável pela adoção</strong>
+          <span id="doador-nome"></span> — <span id="doador-cidade"></span>
+        </div>
+
+        <!-- Bloco de adoção (preenchido via JS) -->
+        <div id="bloco-adocao">
+          <div class="card-adocao">
+            <h2>🐾 Quero adotar este animal</h2>
+            <form id="form-adocao" class="form-adocao" novalidate>
+              <div class="campo">
+                <label for="tipo_moradia">Tipo de moradia <span class="req">*</span></label>
+                <select id="tipo_moradia" required>
+                  <option value="">Selecione...</option>
+                  <option value="casa_com_quintal">🏡 Casa com quintal</option>
+                  <option value="casa_sem_quintal">🏠 Casa sem quintal</option>
+                  <option value="apartamento">🏢 Apartamento</option>
+                </select>
+              </div>
+              <label class="campo-check">
+                <input type="checkbox" id="tem_outros_pets">
+                Tenho outros animais de estimação
+              </label>
+              <label class="campo-check">
+                <input type="checkbox" id="tem_criancas">
+                Tenho crianças em casa
+              </label>
+              <div class="campo">
+                <label for="mensagem">Mensagem para o doador (opcional)</label>
+                <textarea id="mensagem" placeholder="Conte um pouco sobre você e por que quer adotar..."></textarea>
+              </div>
+              <div id="alerta-adocao" class="alerta" role="alert"></div>
+              <button type="submit" class="btn btn-primario">Enviar solicitação</button>
+            </form>
+          </div>
+        </div>
+
+        <div id="msg-nao-logado" class="msg-nao-logado" style="display:none">
+          <p>Para solicitar a adoção, <a href="/pages/login.html">faça login</a> ou <a href="/pages/cadastro.html">crie uma conta</a> gratuitamente.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>🐾 Adota Pet &mdash; Projeto acadêmico 2026</p>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/animal.js"></script>
+</body>
+</html>
